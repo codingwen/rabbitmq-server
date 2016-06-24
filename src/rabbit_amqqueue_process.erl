@@ -86,7 +86,9 @@
             %% that may or may not be still valid
             args_policy_version,
             %% running | flow | idle
-            status
+            status,
+            %% process stats (reductions)
+            stats
            }).
 
 %%----------------------------------------------------------------------------
@@ -116,7 +118,9 @@
          slave_pids,
          synchronised_slave_pids,
          recoverable_slaves,
-         state
+         state,
+         reductions,
+         garbage_collection
         ]).
 
 -define(CREATION_EVENT_KEYS,
@@ -152,7 +156,8 @@ init_state(Q) ->
                senders             = pmon:new(delegate),
                msg_id_to_channel   = gb_trees:empty(),
                status              = running,
-               args_policy_version = 0},
+               args_policy_version = 0,
+               stats               = rabbit_process_stats:init()},
     rabbit_event:init_stats_timer(State, #q.stats_timer).
 
 init_it(Recover, From, State = #q{q = #amqqueue{exclusive_owner = none}}) ->
@@ -925,6 +930,11 @@ i(recoverable_slaves, #q{q = #amqqueue{name    = Name,
     end;
 i(state, #q{status = running}) -> credit_flow:state();
 i(state, #q{status = State})   -> State;
+i(garbage_collection, _S)      ->
+    {garbage_collection, GC} = erlang:process_info(self(), garbage_collection),
+    GC;
+i(reductions, #q{stats = Stats}) ->
+    rabbit_process_stats:stat_rate_per_second(Stats, reductions);
 i(Item, #q{backing_queue_state = BQS, backing_queue = BQ}) ->
     BQ:info(Item, BQS).
 
@@ -1303,10 +1313,11 @@ handle_info({drop_expired, _Vsn}, State) ->
 
 handle_info(emit_stats, State) ->
     emit_stats(State),
+    State1 = rabbit_process_stats:update(State),
     %% Don't call noreply/1, we don't want to set timers
-    {State1, Timeout} = next_state(rabbit_event:reset_stats_timer(
-                                     State, #q.stats_timer)),
-    {noreply, State1, Timeout};
+    {State2, Timeout} = next_state(rabbit_event:reset_stats_timer(
+                                   State1, #q.stats_timer)),
+    {noreply, State2, Timeout};
 
 handle_info({'DOWN', _MonitorRef, process, DownPid, _Reason},
             State = #q{q = #amqqueue{exclusive_owner = DownPid}}) ->
