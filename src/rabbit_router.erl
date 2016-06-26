@@ -29,10 +29,10 @@
 -type(routing_key() :: binary()).
 -type(match_result() :: [rabbit_types:binding_destination()]).
 
--spec(match_bindings/2 :: (rabbit_types:binding_source(),
+-spec(match_bindings(rabbit_types:binding_source(),
                            fun ((rabbit_types:binding()) -> boolean())) ->
     match_result()).
--spec(match_routing_key/2 :: (rabbit_types:binding_source(),
+-spec(match_routing_key(rabbit_types:binding_source(),
                              [routing_key()] | ['_']) ->
     match_result()).
 

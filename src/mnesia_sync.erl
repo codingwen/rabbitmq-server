@@ -36,7 +36,7 @@
 
 -ifdef(use_specs).
 
--spec(sync/0 :: () -> 'ok').
+-spec(sync() -> 'ok').
 
 -endif.
 

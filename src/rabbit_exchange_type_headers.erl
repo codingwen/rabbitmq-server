@@ -33,7 +33,7 @@
                     {enables,     kernel_ready}]}).
 
 -ifdef(use_specs).
--spec(headers_match/2 :: (rabbit_framing:amqp_table(),
+-spec(headers_match(rabbit_framing:amqp_table(),
                           rabbit_framing:amqp_table()) -> boolean()).
 -endif.
 

@@ -45,8 +45,8 @@
 
 -ifdef(use_specs).
 
--spec(rename/2 :: (node(), [{node(), node()}]) -> 'ok').
--spec(maybe_finish/1 :: ([node()]) -> 'ok').
+-spec(rename(node(), [{node(), node()}]) -> 'ok').
+-spec(maybe_finish([node()]) -> 'ok').
 
 -endif.
 

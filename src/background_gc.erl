@@ -34,9 +34,9 @@
 
 -ifdef(use_specs).
 
--spec(start_link/0 :: () -> {'ok', pid()} | {'error', any()}).
--spec(run/0 :: () -> 'ok').
--spec(gc/0 :: () -> 'ok').
+-spec(start_link() -> {'ok', pid()} | {'error', any()}).
+-spec(run() -> 'ok').
+-spec(gc() -> 'ok').
 
 -endif.
 

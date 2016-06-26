@@ -126,16 +126,14 @@
 
 -ifdef(use_specs).
 
--spec(start/0 :: () -> no_return()).
--spec(stop/0 :: () -> 'ok').
--spec(action/5 ::
-        (atom(), node(), [string()], [{string(), any()}],
-         fun ((string(), [any()]) -> 'ok'))
+-spec(start() -> no_return()).
+-spec(stop() -> 'ok').
+-spec(action(atom(), node(), [string()], [{string(), any()}],
+             fun ((string(), [any()]) -> 'ok'))
         -> 'ok').
 
--spec(action/6 ::
-        (atom(), node(), [string()], [{string(), any()}],
-         fun ((string(), [any()]) -> 'ok'), timeout())
+-spec(action(atom(), node(), [string()], [{string(), any()}],
+             fun ((string(), [any()]) -> 'ok'), timeout())
         -> 'ok').
 
 -endif.

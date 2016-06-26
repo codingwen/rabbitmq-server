@@ -39,7 +39,7 @@
 
 -type(start_mode() :: 'declare' | 'recovery' | 'slave').
 
--spec(start_link/3 :: (rabbit_types:amqqueue(), start_mode(), pid())
+-spec(start_link(rabbit_types:amqqueue(), start_mode(), pid())
                       -> rabbit_types:ok_pid_or_error()).
 
 -endif.

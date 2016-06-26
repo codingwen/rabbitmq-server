@@ -73,14 +73,14 @@
 -ifdef(use_specs).
 
 -type(disk_free_limit() :: (integer() | string() | {'mem_relative', float()})).
--spec(start_link/1 :: (disk_free_limit()) -> rabbit_types:ok_pid_or_error()).
--spec(get_disk_free_limit/0 :: () -> integer()).
--spec(set_disk_free_limit/1 :: (disk_free_limit()) -> 'ok').
--spec(get_min_check_interval/0 :: () -> integer()).
--spec(set_min_check_interval/1 :: (integer()) -> 'ok').
--spec(get_max_check_interval/0 :: () -> integer()).
--spec(set_max_check_interval/1 :: (integer()) -> 'ok').
--spec(get_disk_free/0 :: () -> (integer() | 'unknown')).
+-spec(start_link(disk_free_limit()) -> rabbit_types:ok_pid_or_error()).
+-spec(get_disk_free_limit() -> integer()).
+-spec(set_disk_free_limit(disk_free_limit()) -> 'ok').
+-spec(get_min_check_interval() -> integer()).
+-spec(set_min_check_interval(integer()) -> 'ok').
+-spec(get_max_check_interval() -> integer()).
+-spec(set_max_check_interval(integer()) -> 'ok').
+-spec(get_disk_free() -> (integer() | 'unknown')).
 
 -endif.
 

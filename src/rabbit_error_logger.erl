@@ -33,8 +33,8 @@
 
 -ifdef(use_specs).
 
--spec(start/0 :: () -> 'ok').
--spec(stop/0  :: () -> 'ok').
+-spec(start() -> 'ok').
+-spec(stop() -> 'ok').
 
 -endif.
 

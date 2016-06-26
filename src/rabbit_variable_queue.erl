@@ -406,9 +406,9 @@
              io_batch_size         :: pos_integer(),
              mode                  :: 'default' | 'lazy' }).
 %% Duplicated from rabbit_backing_queue
--spec(ack/2 :: ([ack()], state()) -> {[rabbit_guid:guid()], state()}).
+-spec(ack([ack()], state()) -> {[rabbit_guid:guid()], state()}).
 
--spec(multiple_routing_keys/0 :: () -> 'ok').
+-spec(multiple_routing_keys() -> 'ok').
 
 -endif.
 

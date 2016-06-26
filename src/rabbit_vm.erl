@@ -25,9 +25,9 @@
 
 -ifdef(use_specs).
 
--spec(memory/0 :: () -> rabbit_types:infos()).
--spec(binary/0 :: () -> rabbit_types:infos()).
--spec(ets_tables_memory/1 :: (Owners) -> rabbit_types:infos()
+-spec(memory() -> rabbit_types:infos()).
+-spec(binary() -> rabbit_types:infos()).
+-spec(ets_tables_memory(Owners) -> rabbit_types:infos()
      when Owners :: all | OwnerProcessName | [OwnerProcessName],
           OwnerProcessName :: atom()).
 
@@ -239,9 +239,9 @@ conn_type(PDict) ->
                                   info_value())).
 -type(distinguisher() :: fun (([{term(), term()}]) -> atom())).
 -type(distinguishers() :: [{info_key(), distinguisher()}]).
--spec(sum_processes/3 :: ([process()], distinguishers(), [info_key()]) ->
+-spec(sum_processes([process()], distinguishers(), [info_key()]) ->
                               {[{process(), [info_item()]}], [info_item()]}).
--spec(sum_processes/4 :: ([process()], accumulate(), distinguishers(),
+-spec(sum_processes([process()], accumulate(), distinguishers(),
                           [info_item()]) ->
                               {[{process(), [info_item()]}], [info_item()]}).
 -endif.

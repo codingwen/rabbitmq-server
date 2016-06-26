@@ -35,10 +35,9 @@
 
 -type(mfargs() :: {atom(), atom(), [any()]}).
 
--spec(start_link/10 ::
-        (inet:ip_address(), inet:port_number(), module(), [gen_tcp:listen_option()],
-         module(), any(), mfargs(), mfargs(), integer(), string()) ->
-                           rabbit_types:ok_pid_or_error()).
+-spec(start_link(inet:ip_address(), inet:port_number(), module(), [gen_tcp:listen_option()],
+                 module(), any(), mfargs(), mfargs(), integer(), string()) ->
+             rabbit_types:ok_pid_or_error()).
 
 -endif.
 

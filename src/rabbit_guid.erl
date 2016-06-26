@@ -38,12 +38,12 @@
 
 -type(guid() :: binary()).
 
--spec(start_link/0 :: () -> rabbit_types:ok_pid_or_error()).
--spec(filename/0 :: () -> string()).
--spec(gen/0 :: () -> guid()).
--spec(gen_secure/0 :: () -> guid()).
--spec(string/2 :: (guid(), any()) -> string()).
--spec(binary/2 :: (guid(), any()) -> binary()).
+-spec(start_link() -> rabbit_types:ok_pid_or_error()).
+-spec(filename() -> string()).
+-spec(gen() -> guid()).
+-spec(gen_secure() -> guid()).
+-spec(string(guid(), any()) -> string()).
+-spec(binary(guid(), any()) -> binary()).
 
 -endif.
 

@@ -61,9 +61,9 @@
 -type(slave_sync_state() :: {[{rabbit_types:msg_id(), ack()}], timer:tref(),
                              bqs()}).
 
--spec(master_prepare/4 :: (reference(), rabbit_amqqueue:name(),
+-spec(master_prepare(reference(), rabbit_amqqueue:name(),
                                log_fun(), [pid()]) -> pid()).
--spec(master_go/8 :: (pid(), reference(), log_fun(),
+-spec(master_go(pid(), reference(), log_fun(),
                       rabbit_mirror_queue_master:stats_fun(),
                       rabbit_mirror_queue_master:stats_fun(),
                       non_neg_integer(),
@@ -71,7 +71,7 @@
                           {'already_synced', bqs()} | {'ok', bqs()} |
                           {'shutdown', any(), bqs()} |
                           {'sync_died', any(), bqs()}).
--spec(slave/7 :: (non_neg_integer(), reference(), timer:tref(), pid(),
+-spec(slave(non_neg_integer(), reference(), timer:tref(), pid(),
                   bq(), bqs(), fun((bq(), bqs()) -> {timer:tref(), bqs()})) ->
                       'denied' |
                       {'ok' | 'failed', slave_sync_state()} |

@@ -54,15 +54,15 @@
 -type(resource_alarm() :: {resource_limit, resource_alarm_source(), node()}).
 -type(alarm() :: local_alarm() | resource_alarm()).
 
--spec(start_link/0 :: () -> rabbit_types:ok_pid_or_error()).
--spec(start/0 :: () -> 'ok').
--spec(stop/0 :: () -> 'ok').
--spec(register/2 :: (pid(), rabbit_types:mfargs()) -> [atom()]).
--spec(set_alarm/1 :: ({alarm(), []}) -> 'ok').
--spec(clear_alarm/1 :: (alarm()) -> 'ok').
--spec(on_node_up/1 :: (node()) -> 'ok').
--spec(on_node_down/1 :: (node()) -> 'ok').
--spec(get_alarms/0 :: () -> [{alarm(), []}]).
+-spec(start_link() -> rabbit_types:ok_pid_or_error()).
+-spec(start() -> 'ok').
+-spec(stop() -> 'ok').
+-spec(register(pid(), rabbit_types:mfargs()) -> [atom()]).
+-spec(set_alarm({alarm(), []}) -> 'ok').
+-spec(clear_alarm(alarm()) -> 'ok').
+-spec(on_node_up(node()) -> 'ok').
+-spec(on_node_down(node()) -> 'ok').
+-spec(get_alarms() -> [{alarm(), []}]).
 
 -else.
 

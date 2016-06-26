@@ -28,8 +28,8 @@
 
 -ifdef(use_specs).
 
--spec(start_link/1 :: (integer()) -> rabbit_types:ok_pid_or_error()).
--spec(count/1 :: ([node()]) -> integer()).
+-spec(start_link(integer()) -> rabbit_types:ok_pid_or_error()).
+-spec(count([node()]) -> integer()).
 
 -endif.
 

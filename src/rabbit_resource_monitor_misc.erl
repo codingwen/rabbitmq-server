@@ -21,7 +21,7 @@
 
 -ifdef(use_spec).
 
--spec(parse_information_unit/1 :: (integer() | string()) ->
+-spec(parse_information_unit(integer() | string()) ->
                                        {ok, integer()} | {error, parse_error}).
 
 -endif.

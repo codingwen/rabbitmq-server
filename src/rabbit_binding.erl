@@ -56,43 +56,39 @@
 %% dialyzer into objecting to everything that uses it.
 -type(deletions() :: dict:dict()).
 
--spec(recover/2 :: ([rabbit_exchange:name()], [rabbit_amqqueue:name()]) ->
+-spec(recover([rabbit_exchange:name()], [rabbit_amqqueue:name()]) ->
                         'ok').
--spec(exists/1 :: (rabbit_types:binding()) -> boolean() | bind_errors()).
--spec(add/1    :: (rabbit_types:binding())              -> bind_res()).
--spec(add/2    :: (rabbit_types:binding(), inner_fun()) -> bind_res()).
--spec(remove/1 :: (rabbit_types:binding())              -> bind_res()).
--spec(remove/2 :: (rabbit_types:binding(), inner_fun()) -> bind_res()).
--spec(list/1 :: (rabbit_types:vhost()) -> bindings()).
--spec(list_for_source/1 ::
-        (rabbit_types:binding_source()) -> bindings()).
--spec(list_for_destination/1 ::
-        (rabbit_types:binding_destination()) -> bindings()).
--spec(list_for_source_and_destination/2 ::
-        (rabbit_types:binding_source(), rabbit_types:binding_destination()) ->
-                                                bindings()).
--spec(info_keys/0 :: () -> rabbit_types:info_keys()).
--spec(info/1 :: (rabbit_types:binding()) -> rabbit_types:infos()).
--spec(info/2 :: (rabbit_types:binding(), rabbit_types:info_keys()) ->
+-spec(exists(rabbit_types:binding()) -> boolean() | bind_errors()).
+-spec(add(rabbit_types:binding())              -> bind_res()).
+-spec(add(rabbit_types:binding(), inner_fun()) -> bind_res()).
+-spec(remove(rabbit_types:binding())              -> bind_res()).
+-spec(remove(rabbit_types:binding(), inner_fun()) -> bind_res()).
+-spec(list(rabbit_types:vhost()) -> bindings()).
+-spec(list_for_source(rabbit_types:binding_source()) -> bindings()).
+-spec(list_for_destination(rabbit_types:binding_destination()) -> bindings()).
+-spec(list_for_source_and_destination(rabbit_types:binding_source(),
+                                      rabbit_types:binding_destination()) ->
+             bindings()).
+-spec(info_keys() -> rabbit_types:info_keys()).
+-spec(info(rabbit_types:binding()) -> rabbit_types:infos()).
+-spec(info(rabbit_types:binding(), rabbit_types:info_keys()) ->
                      rabbit_types:infos()).
--spec(info_all/1 :: (rabbit_types:vhost()) -> [rabbit_types:infos()]).
--spec(info_all/2 ::(rabbit_types:vhost(), rabbit_types:info_keys())
-                   -> [rabbit_types:infos()]).
--spec(info_all/4 ::(rabbit_types:vhost(), rabbit_types:info_keys(),
-                    reference(), pid()) -> 'ok').
--spec(has_for_source/1 :: (rabbit_types:binding_source()) -> boolean()).
--spec(remove_for_source/1 :: (rabbit_types:binding_source()) -> bindings()).
--spec(remove_for_destination/2 ::
-        (rabbit_types:binding_destination(), boolean()) -> deletions()).
--spec(remove_transient_for_destination/1 ::
-        (rabbit_types:binding_destination()) -> deletions()).
--spec(process_deletions/1 :: (deletions()) -> rabbit_misc:thunk('ok')).
--spec(combine_deletions/2 :: (deletions(), deletions()) -> deletions()).
--spec(add_deletion/3 :: (rabbit_exchange:name(),
+-spec(info_all(rabbit_types:vhost()) -> [rabbit_types:infos()]).
+-spec(info_all(rabbit_types:vhost(), rabbit_types:info_keys())
+      -> [rabbit_types:infos()]).
+-spec(info_all(rabbit_types:vhost(), rabbit_types:info_keys(),
+               reference(), pid()) -> 'ok').
+-spec(has_for_source(rabbit_types:binding_source()) -> boolean()).
+-spec(remove_for_source(rabbit_types:binding_source()) -> bindings()).
+-spec(remove_for_destination(rabbit_types:binding_destination(), boolean()) -> deletions()).
+-spec(remove_transient_for_destination(rabbit_types:binding_destination()) -> deletions()).
+-spec(process_deletions(deletions()) -> rabbit_misc:thunk('ok')).
+-spec(combine_deletions(deletions(), deletions()) -> deletions()).
+-spec(add_deletion(rabbit_exchange:name(),
                          {'undefined' | rabbit_types:exchange(),
                           'deleted' | 'not_deleted',
                           bindings()}, deletions()) -> deletions()).
--spec(new_deletions/0 :: () -> deletions()).
+-spec(new_deletions() -> deletions()).
 
 -endif.
 

@@ -49,7 +49,7 @@
          rabbit_types:protocol(), rabbit_types:user(), rabbit_types:vhost(),
          rabbit_framing:amqp_table(), pid()}).
 
--spec(start_link/1 :: (start_link_args()) -> {'ok', pid(), {pid(), any()}}).
+-spec(start_link(start_link_args()) -> {'ok', pid(), {pid(), any()}}).
 
 -endif.
 

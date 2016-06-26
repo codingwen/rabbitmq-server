@@ -38,8 +38,8 @@
 
 -ifdef(use_specs).
 
--spec(start_link/4 :: (any(), rabbit_net:socket(), module(), any()) -> {'ok', pid(), pid()}).
--spec(reader/1 :: (pid()) -> pid()).
+-spec(start_link(any(), rabbit_net:socket(), module(), any()) -> {'ok', pid(), pid()}).
+-spec(reader(pid()) -> pid()).
 
 -endif.
 

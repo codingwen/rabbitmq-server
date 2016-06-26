@@ -32,8 +32,8 @@
 
 -ifdef(use_specs).
 
--spec(start/0 :: () -> no_return()).
--spec(stop/0 :: () -> 'ok').
+-spec(start() -> no_return()).
+-spec(stop() -> 'ok').
 
 -endif.
 
@@ -130,7 +130,7 @@ dist_port_use_check_ipv6(NodeHost, Port) ->
     end.
 
 -ifdef(use_specs).
--spec(dist_port_use_check_fail/2 :: (non_neg_integer(), string()) ->
+-spec(dist_port_use_check_fail(non_neg_integer(), string()) ->
                                          no_return()).
 -endif.
 dist_port_use_check_fail(Port, Host) ->

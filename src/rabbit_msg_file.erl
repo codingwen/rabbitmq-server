@@ -43,12 +43,12 @@
         fun (({rabbit_types:msg_id(), msg_size(), position(), binary()}, A) ->
                     A)).
 
--spec(append/3 :: (io_device(), rabbit_types:msg_id(), msg()) ->
+-spec(append(io_device(), rabbit_types:msg_id(), msg()) ->
                        rabbit_types:ok_or_error2(msg_size(), any())).
--spec(read/2 :: (io_device(), msg_size()) ->
+-spec(read(io_device(), msg_size()) ->
                      rabbit_types:ok_or_error2({rabbit_types:msg_id(), msg()},
                                                any())).
--spec(scan/4 :: (io_device(), file_size(), message_accumulator(A), A) ->
+-spec(scan(io_device(), file_size(), message_accumulator(A), A) ->
                      {'ok', A, position()}).
 
 -endif.

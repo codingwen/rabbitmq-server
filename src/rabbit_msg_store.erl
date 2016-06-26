@@ -169,31 +169,29 @@
 -type(maybe_close_fds_fun() :: 'undefined' | fun (() -> 'ok')).
 -type(deletion_thunk() :: fun (() -> boolean())).
 
--spec(start_link/4 ::
-        (atom(), file:filename(), [binary()] | 'undefined',
-         {msg_ref_delta_gen(A), A}) -> rabbit_types:ok_pid_or_error()).
--spec(successfully_recovered_state/1 :: (server()) -> boolean()).
--spec(client_init/4 :: (server(), client_ref(), maybe_msg_id_fun(),
+-spec(start_link(atom(), file:filename(), [binary()] | 'undefined',
+                 {msg_ref_delta_gen(A), A}) -> rabbit_types:ok_pid_or_error()).
+-spec(successfully_recovered_state(server()) -> boolean()).
+-spec(client_init(server(), client_ref(), maybe_msg_id_fun(),
                         maybe_close_fds_fun()) -> client_msstate()).
--spec(client_terminate/1 :: (client_msstate()) -> 'ok').
--spec(client_delete_and_terminate/1 :: (client_msstate()) -> 'ok').
--spec(client_ref/1 :: (client_msstate()) -> client_ref()).
--spec(close_all_indicated/1 ::
-        (client_msstate()) -> rabbit_types:ok(client_msstate())).
--spec(write/3 :: (rabbit_types:msg_id(), msg(), client_msstate()) -> 'ok').
--spec(write_flow/3 :: (rabbit_types:msg_id(), msg(), client_msstate()) -> 'ok').
--spec(read/2 :: (rabbit_types:msg_id(), client_msstate()) ->
+-spec(client_terminate(client_msstate()) -> 'ok').
+-spec(client_delete_and_terminate(client_msstate()) -> 'ok').
+-spec(client_ref(client_msstate()) -> client_ref()).
+-spec(close_all_indicated(client_msstate()) -> rabbit_types:ok(client_msstate())).
+-spec(write(rabbit_types:msg_id(), msg(), client_msstate()) -> 'ok').
+-spec(write_flow(rabbit_types:msg_id(), msg(), client_msstate()) -> 'ok').
+-spec(read(rabbit_types:msg_id(), client_msstate()) ->
                      {rabbit_types:ok(msg()) | 'not_found', client_msstate()}).
--spec(contains/2 :: (rabbit_types:msg_id(), client_msstate()) -> boolean()).
--spec(remove/2 :: ([rabbit_types:msg_id()], client_msstate()) -> 'ok').
+-spec(contains(rabbit_types:msg_id(), client_msstate()) -> boolean()).
+-spec(remove([rabbit_types:msg_id()], client_msstate()) -> 'ok').
 
--spec(set_maximum_since_use/2 :: (server(), non_neg_integer()) -> 'ok').
--spec(has_readers/2 :: (non_neg_integer(), gc_state()) -> boolean()).
--spec(combine_files/3 :: (non_neg_integer(), non_neg_integer(), gc_state()) ->
+-spec(set_maximum_since_use(server(), non_neg_integer()) -> 'ok').
+-spec(has_readers(non_neg_integer(), gc_state()) -> boolean()).
+-spec(combine_files(non_neg_integer(), non_neg_integer(), gc_state()) ->
                               deletion_thunk()).
--spec(delete_file/2 :: (non_neg_integer(), gc_state()) -> deletion_thunk()).
--spec(force_recovery/2 :: (file:filename(), server()) -> 'ok').
--spec(transform_dir/3 :: (file:filename(), server(),
+-spec(delete_file(non_neg_integer(), gc_state()) -> deletion_thunk()).
+-spec(force_recovery(file:filename(), server()) -> 'ok').
+-spec(transform_dir(file:filename(), server(),
         fun ((any()) -> (rabbit_types:ok_or_error2(msg(), any())))) -> 'ok').
 
 -endif.

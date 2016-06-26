@@ -34,8 +34,8 @@
 
 -ifdef(use_specs).
 
--spec(start/0 :: () -> no_return()).
--spec(stop/0 :: () -> 'ok').
+-spec(start() -> no_return()).
+-spec(stop() -> 'ok').
 
 -endif.
 

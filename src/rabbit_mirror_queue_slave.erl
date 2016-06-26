@@ -543,7 +543,7 @@ handle_process_result({ok,   State}) -> noreply(State);
 handle_process_result({stop, State}) -> {stop, normal, State}.
 
 -ifdef(use_specs).
--spec(promote_me/2 :: ({pid(), term()}, #state{}) -> no_return()).
+-spec(promote_me({pid(), term()}, #state{}) -> no_return()).
 -endif.
 promote_me(From, #state { q                   = Q = #amqqueue { name = QName },
                           gm                  = GM,

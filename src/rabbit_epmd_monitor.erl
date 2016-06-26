@@ -32,7 +32,7 @@
 
 -ifdef(use_specs).
 
--spec(start_link/0 :: () -> rabbit_types:ok_pid_or_error()).
+-spec(start_link() -> rabbit_types:ok_pid_or_error()).
 
 -endif.
 

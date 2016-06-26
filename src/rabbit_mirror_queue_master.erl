@@ -64,15 +64,15 @@
                                  known_senders       :: sets:set()
                                }).
 
--spec(promote_backing_queue_state/8 ::
-        (rabbit_amqqueue:name(), pid(), atom(), any(), pid(), [any()],
+-spec(promote_backing_queue_state(
+        rabbit_amqqueue:name(), pid(), atom(), any(), pid(), [any()],
          dict:dict(), [pid()]) -> master_state()).
--spec(sender_death_fun/0 :: () -> death_fun()).
--spec(depth_fun/0 :: () -> depth_fun()).
--spec(init_with_existing_bq/3 :: (rabbit_types:amqqueue(), atom(), any()) ->
+-spec(sender_death_fun() -> death_fun()).
+-spec(depth_fun() -> depth_fun()).
+-spec(init_with_existing_bq(rabbit_types:amqqueue(), atom(), any()) ->
                                       master_state()).
--spec(stop_mirroring/1 :: (master_state()) -> {atom(), any()}).
--spec(sync_mirrors/3 :: (stats_fun(), stats_fun(), master_state()) ->
+-spec(stop_mirroring(master_state()) -> {atom(), any()}).
+-spec(sync_mirrors(stats_fun(), stats_fun(), master_state()) ->
     {'ok', master_state()} | {stop, any(), master_state()}).
 
 -endif.
